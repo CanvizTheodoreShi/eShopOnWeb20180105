@@ -20,10 +20,6 @@ namespace Microsoft.eShopWeb
 
         public static void Main(string[] args)
         {
-            Configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: false)
-            .Build();
-
             var host = BuildWebHost(args);
 
             using (var scope = host.Services.CreateScope())
@@ -58,9 +54,9 @@ namespace Microsoft.eShopWeb
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseApplicationInsights(Configuration["InstrumentationKey"])
-                .UseUrls("http://0.0.0.0:5106")
-                .UseStartup<Startup>()
-                .Build();
+            .UseApplicationInsights()
+            .UseUrls("http://0.0.0.0:5106")
+            .UseStartup<Startup>()
+            .Build();
     }
 }
