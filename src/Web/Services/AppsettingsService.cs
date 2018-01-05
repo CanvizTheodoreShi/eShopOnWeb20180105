@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.eShopWeb.Services
 {
@@ -7,12 +6,9 @@ namespace Microsoft.eShopWeb.Services
     {
         public static IConfiguration Configuration { get; set; }
 
-        public AppSettingsService(IHostingEnvironment env)
+        public AppSettingsService(IConfiguration configuration)
         {
-            Configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-            .Build();
+            Configuration = configuration;
         }
 
         public string getValue(string Key)
