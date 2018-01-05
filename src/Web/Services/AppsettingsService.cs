@@ -1,15 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.eShopWeb.Services
 {
-    public class AppsettingsService: IAppsettingsService
+    public class AppSettingsService : IAppsettingsService
     {
         public static IConfiguration Configuration { get; set; }
 
-        public AppsettingsService()
+        public AppSettingsService(IHostingEnvironment env)
         {
             Configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: false)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
             .Build();
         }
 
