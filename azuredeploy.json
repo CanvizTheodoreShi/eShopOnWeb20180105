@@ -19,12 +19,11 @@
     "administratorLoginPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "The admin password for the database."
+        "description": "The admin password for the database, it must meet the complexity requirements."
       }
     },
     "sourceCodeRepositoryURL": {
       "type": "string",
-      "defaultValue": "https://github.com/CanvizTheodoreShi/eShopOnWeb20180105",
       "metadata": {
         "description": "Source code repository URL."
       }
