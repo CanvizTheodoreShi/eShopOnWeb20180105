@@ -32,7 +32,7 @@ Follow the instructions below to authorize your Azure subscription to access you
 
      ![](Images/update-github-token-in-azure-resource-explorer.png)
 
-   - Click **PUT**
+   - Click **PUT**.
 
 
 
