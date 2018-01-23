@@ -65,3 +65,31 @@ Follow the instructions below to authorize your Azure subscription to access you
    - Check **I agree to the terms and conditions stated above**.
 
 4. Click **Purchase**.
+
+> **Note:** The static files (JS/CSS) hosted on CDN might not take effect immediately, so you might see the page layout is messing up until hours later.
+
+
+## How to Use the eShop Website ##
+
+1. Open the website in browser.
+
+2. Sign in with this default credential.
+
+   User Name                | Password
+   ------------------------ | ---------
+   demouser@microsoft.com   | Pass@word1
+
+3. Use the BRAND/TYPE dropdowns to filter the products.
+
+   ![](Images/web-filter.jpg)
+
+4. Choose a product and click "ADD TO BASKET".
+5. Modify the "Quality" if need and click "CHECKOUT".
+6. Click "My orders" on the top right of the page.
+7. You would see the order status is "Pending".
+
+   ![](Images/web-order-pending.jpg)
+
+8. Once you refresh the page around 1 min later, the status would be changed to "Paid" automatically (pretend third-party payment).
+
+   ![](Images/web-order-paid.jpg)
