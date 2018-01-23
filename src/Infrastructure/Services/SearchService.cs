@@ -14,11 +14,13 @@ namespace Infrastructure.Services
 
         public string SearchServiceName { private set; get; }
         public string SearchServiceAdminApiKey { private set; get; }
+        public string SearchServiceQueryApiKey { private set; get; }
 
-        public SearchService(string searchServiceName, string searchServiceAdminApiKey)
+        public SearchService(string searchServiceName, string searchServiceAdminApiKey, string searchServiceQueryApiKey)
         {
             SearchServiceName = searchServiceName;
             SearchServiceAdminApiKey = searchServiceAdminApiKey;
+            SearchServiceQueryApiKey = searchServiceQueryApiKey;
         }
 
         // This sample shows how to delete, create, upload documents and query an index
@@ -70,9 +72,9 @@ namespace Infrastructure.Services
             }
         }
 
-        public DocumentSearchResult<CatalogItemSearchIndex> SearchCatalog(string keywords, int? brandId, int? typeId, int pageIndex, int pageSize)
+        public DocumentSearchResult<CatalogItemSearchIndex> SearchCatalog(int pageIndex, int pageSize, int? brandId, int? typeId, string keywords)
         {
-            SearchIndexClient indexClient = new SearchIndexClient(SearchServiceName, INDEX_CATALOG_NAME, new SearchCredentials(SearchServiceAdminApiKey));
+            SearchIndexClient indexClient = new SearchIndexClient(SearchServiceName, INDEX_CATALOG_NAME, new SearchCredentials(SearchServiceQueryApiKey));
 
             if (string.IsNullOrEmpty(keywords))
             {

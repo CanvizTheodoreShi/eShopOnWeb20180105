@@ -11,10 +11,11 @@ namespace Microsoft.eShopWeb.Controllers.Api
         public CatalogController(ICatalogService catalogService) => _catalogService = catalogService;
 
         [HttpGet]
-        public async Task<IActionResult> List(string keywords, int? brandFilterApplied, int? typesFilterApplied, int? page)
+        public async Task<IActionResult> List(int? page, int? brandFilterApplied, int? typesFilterApplied, string keywords)
         {
-            var itemsPage = 10;           
-            var catalogModel = await _catalogService.SearchCatalogItems(keywords, brandFilterApplied, typesFilterApplied, page ?? 0, itemsPage);
+            var itemsPage = 9;
+            //var catalogModel = await _catalogService.SearchCatalogItems(page ?? 0, itemsPage, brandFilterApplied, typesFilterApplied, keywords);
+            var catalogModel = await _catalogService.GetCatalogItems(page ?? 0, itemsPage, brandFilterApplied, typesFilterApplied);
             return Ok(catalogModel);
         }
     }
