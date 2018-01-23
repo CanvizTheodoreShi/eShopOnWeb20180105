@@ -41,11 +41,11 @@ namespace Microsoft.eShopWeb.Services
             _uriComposer = uriComposer;
         }
 
-        public async Task<CatalogIndexViewModel> SearchCatalogItems(string keywords, int? brandId, int? typeId, int pageIndex, int itemsPage)
+        public async Task<CatalogIndexViewModel> SearchCatalogItems(int pageIndex, int itemsPage, int? brandId, int? typeId, string keywords)
         {
             _logger.LogInformation("GetCatalogItems called.");
 
-            var results = _searchSvc.SearchCatalog(keywords, brandId, typeId, pageIndex, itemsPage);
+            var results = _searchSvc.SearchCatalog(pageIndex, itemsPage, brandId, typeId, keywords);
 
             var itemsOnPage = results.Results.Select(o => o.Document).ToList();
 

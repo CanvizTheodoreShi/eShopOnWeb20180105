@@ -23,9 +23,9 @@ namespace Microsoft.eShopWeb.Services
             _catalogService = catalogService;
         }
 
-        public async Task<CatalogIndexViewModel> SearchCatalogItems(string keywords, int? brandId, int? typeId, int pageIndex, int itemsPage)
+        public async Task<CatalogIndexViewModel> SearchCatalogItems(int pageIndex, int itemsPage, int? brandId, int? typeId, string keywords)
         {
-            return await _catalogService.SearchCatalogItems(keywords, brandId, typeId, pageIndex, itemsPage);
+            return await _catalogService.SearchCatalogItems(pageIndex, itemsPage, brandId, typeId, keywords);
         }
 
         public async Task<CatalogIndexViewModel> GetCatalogItems(int pageIndex, int itemsPage, int? brandId, int? typeId)

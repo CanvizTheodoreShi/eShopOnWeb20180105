@@ -45,7 +45,7 @@ namespace Infrastructure.Data
 
                     await catalogContext.SaveChangesAsync();
 
-                    searchSvc.IndexCatalog(items);
+                    //searchSvc.IndexCatalog(items);
                 }
             }
             catch (Exception ex)

@@ -99,7 +99,7 @@ namespace Microsoft.eShopWeb
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<CatalogService>();
-            services.AddScoped(providier => new SearchService(Configuration["SearchServiceName"], Configuration["SearchServiceAdminApiKey"]));
+            services.AddScoped(providier => new SearchService(Configuration["SearchServiceName"], Configuration["SearchServiceAdminApiKey"], Configuration["SearchServiceQueryApiKey"]));
             services.AddScoped<ICloudStorageService, CloudStorageService>(providier => new CloudStorageService(Configuration.GetConnectionString("StorageConnection")));
             services.Configure<CatalogSettings>(Configuration);
             services.AddSingleton<IUriComposer>(new UriComposer(Configuration.Get<CatalogSettings>()));
