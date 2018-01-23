@@ -45,7 +45,6 @@
   },
   "variables": {
     "hostplanName": "[concat(toLower(parameters('namePrefix')), 'hostplan', uniqueString(resourceGroup().id))]",
-    "searchserviceName": "[concat(toLower(parameters('namePrefix')), 'searchservice', uniqueString(resourceGroup().id))]",
     "webSiteName": "[concat(toLower(parameters('namePrefix')), 'web', uniqueString(resourceGroup().id))]",
     "cdnwebSiteName": "[concat(toLower(parameters('namePrefix')), 'cdnweb', uniqueString(resourceGroup().id))]",
     "applicationInsightName": "[concat(toLower(parameters('namePrefix')), 'appinsight', uniqueString(resourceGroup().id))]",
@@ -67,25 +66,6 @@
       "properties": {
         "ApplicationId": "[variables('applicationInsightName')]"
       }
-    },
-    {
-      "type": "Microsoft.Search/searchServices",
-      "sku": {
-        "name": "basic"
-      },
-      "name": "[variables('searchserviceName')]",
-      "apiVersion": "2015-08-19",
-      "location": "West US",
-      "scale": null,
-      "properties": {
-        "replicaCount": 1,
-        "partitionCount": 1,
-        "hostingMode": "Default"
-      },
-      "tags": {
-        "displayName": "SearchServices"
-      },
-      "dependsOn": []
     },
     {
       "apiVersion": "2015-08-01",
@@ -325,7 +305,6 @@
       "type": "Microsoft.Web/sites",
       "location": "East US",
       "dependsOn": [
-        "[resourceId('Microsoft.Search/searchServices/', variables('searchserviceName'))]",
         "[resourceId('Microsoft.Web/serverFarms/', variables('hostplanName'))]",
         "[resourceId('Microsoft.Web/Sites/', variables('cdnwebSiteName'))]",
         "[resourceId('Microsoft.Cache/Redis/', variables('rediscacheName'))]",
@@ -374,8 +353,6 @@
           "properties": {
             "CDNRoot": "[concat('https://', reference(resourceId('Microsoft.Cdn/profiles/endpoints', variables('cdnprofileName'), variables('cdnprofileendpointsName'))).hostName)]",
             "CacheConnection": "[concat(reference(resourceId('Microsoft.Cache/redis', variables('rediscacheName'))).hostName, ':', reference(resourceId('Microsoft.Cache/redis', variables('rediscacheName'))).sslPort, ',password=', listkeys(resourceId('Microsoft.Cache/redis', variables('rediscacheName')), providers('Microsoft.Cache', 'redis').apiVersions[0]).primaryKey, ',ssl=True,abortConnect=False,syncTimeout=2000,allowAdmin=true')]",
-            "SearchServiceName": "[variables('searchserviceName')]",
-            "SearchServiceAdminApiKey": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('searchserviceName')), '2015-08-19').PrimaryKey]",
             "ApplicationInsights:InstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', variables('applicationInsightName')), '2014-04-01').InstrumentationKey]",
             "SourceCodeRepositoryUrl": "[parameters('sourceCodeRepositoryURL')]",
             "project": "src/Web/Web.csproj"
