@@ -54,7 +54,7 @@ Follow the instructions below to authorize your Azure subscription to access you
 
    - **Administrator Login**: Provide the admin login name for the database.
 
-   - **Administrator Login Password**: Provide the admin login password for the database, it must meet the complexity requirements.
+   - **Administrator Login Password**: Provide the admin login password for the database, it must meet the complexity requirements, e.g. `Jan232@18`
 
    - **Source Code Repository URL**: Provide the repository URL of your own fork.
 
