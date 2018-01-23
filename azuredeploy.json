@@ -44,18 +44,18 @@
     }
   },
   "variables": {
-    "hostplanName": "[concat(toLower(parameters('namePrefix')), 'hostplan', uniqueString(resourceGroup().id))]",
-    "searchserviceName": "[concat(toLower(parameters('namePrefix')), 'searchservice', uniqueString(resourceGroup().id))]",
-    "webSiteName": "[concat(toLower(parameters('namePrefix')), 'web', uniqueString(resourceGroup().id))]",
-    "cdnwebSiteName": "[concat(toLower(parameters('namePrefix')), 'cdnweb', uniqueString(resourceGroup().id))]",
-    "applicationInsightName": "[concat(toLower(parameters('namePrefix')), 'appinsight', uniqueString(resourceGroup().id))]",
-    "sqlserverName": "[concat(toLower(parameters('namePrefix')), 'sqlserver', uniqueString(resourceGroup().id))]",
-    "rediscacheName": "[concat(toLower(parameters('namePrefix')), 'rediscache', uniqueString(resourceGroup().id))]",
-    "cdnprofileName": "[concat(toLower(parameters('namePrefix')), 'cdnprofile', uniqueString(resourceGroup().id))]",
-    "cdnprofileendpointsName": "[concat(toLower(parameters('namePrefix')), 'cdnendpoints', uniqueString(resourceGroup().id))]",
-    "cdnprofileendpointsoriginsName": "[concat(toLower(parameters('namePrefix')), 'cdnorigins', uniqueString(resourceGroup().id))]",
-    "storageaccountName": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]",
-    "functionAppName": "[concat(toLower('OrderPaymentProcessing'), uniqueString(resourceGroup().id))]"
+    "hostplanName": "[concat(toLower(parameters('namePrefix')), 'hostplan-', uniqueString(resourceGroup().id))]",
+    "searchserviceName": "[concat(toLower(parameters('namePrefix')), 'searchservice-', uniqueString(resourceGroup().id))]",
+    "webSiteName": "[concat(toLower(parameters('namePrefix')), 'web-', uniqueString(resourceGroup().id))]",
+    "cdnwebSiteName": "[concat(toLower(parameters('namePrefix')), 'cdnweb-', uniqueString(resourceGroup().id))]",
+    "applicationInsightName": "[concat(toLower(parameters('namePrefix')), 'appinsight-', uniqueString(resourceGroup().id))]",
+    "sqlserverName": "[concat(toLower(parameters('namePrefix')), 'sqlserver-', uniqueString(resourceGroup().id))]",
+    "rediscacheName": "[concat(toLower(parameters('namePrefix')), 'rediscache-', uniqueString(resourceGroup().id))]",
+    "cdnprofileName": "[concat(toLower(parameters('namePrefix')), 'cdnprofile-', uniqueString(resourceGroup().id))]",
+    "cdnprofileendpointsName": "[concat(toLower(parameters('namePrefix')), 'cdnendpoints-', uniqueString(resourceGroup().id))]",
+    "cdnprofileendpointsoriginsName": "[concat(toLower(parameters('namePrefix')), 'cdnorigins-', uniqueString(resourceGroup().id))]",
+    "storageaccountName": "[concat(toLower(parameters('namePrefix')), 'storage-', uniqueString(resourceGroup().id))]",
+    "functionAppName": "[concat(toLower('OrderPaymentProcessing'), 'storage-', uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
